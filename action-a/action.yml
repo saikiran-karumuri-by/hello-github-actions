@@ -9,8 +9,8 @@ inputs:
     default: "World"
 
 runs:
-  using: "bash"
-  main: "entrypoint"
+  using: "docker"
+  main: "Dockerfile"
 
 branding:
   icon: "mic"
