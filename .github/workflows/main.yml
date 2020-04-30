@@ -5,11 +5,15 @@ on:
       - saitest
 
 jobs:
-  build:
-    name: Hello world action
+  hello_world_job:
     runs-on: ubuntu-latest
+    name: A job to say hello
     steps:
-      - uses: actions/checkout@v1
-      - uses: ./action-a
-        with:
-          MY_NAME: "Mona"
+    - name: Hello world action step
+      id: hello
+      uses: ./action-a
+      with:
+        who-to-greet: 'Mona the Octocat'
+    # Use the output from the `hello` step
+    - name: Get the output time
+      run: echo "The time was ${{ steps.hello.outputs.time }}"

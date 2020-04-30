@@ -1,4 +1,5 @@
 #!/bin/sh -l
 
-sh -c "script execution started"
-sh -c "echo Hello world my name is $INPUT_MY_NAME"
+echo "Hello $1"
+time=$(date)
+echo "::set-output name=time::$time"
