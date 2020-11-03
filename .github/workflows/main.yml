@@ -15,3 +15,12 @@ jobs:
         run: |
           chmod +x ./action-a/git-message.sh
           ./action-a/git-message.sh $GITHUB_REPOSITORY  ${{ secrets.GITHUB_TOKEN }} "${{ github.head_ref }}" "${{ github.base_ref }}" "${{ github.event.head_commit.message }}" "${{ github.event.pull_request.number }}"
+      - uses: octokit/request-action@v2.x
+        id: reviews
+        with:
+          route: GET /repos/:repository/pulls/:prnum/reviews
+          repository: ${{ github.repository }}
+          prnum: ${{ github.event.pull_request.number }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - run: "echo latest release: ${{ steps.reviews.outputs.data }}"

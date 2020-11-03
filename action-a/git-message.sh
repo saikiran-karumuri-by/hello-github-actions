@@ -18,11 +18,5 @@ echo "https://api.github.com/repos/$Git_Repo/pulls/$Git_PR_Num/requested_reviewe
             -H "Authorization: token $Git_Token" \
             "https://api.github.com/repos/$Git_Repo/pulls/$Git_PR_Num/requested_reviewers"
 
-          echo "https://api.github.com/repos/$Git_Repo/pulls/$Git_PR_Num/reviews"
-          curl -sL  -X GET -d @- \
-            -H "Content-Type: application/json" \
-            -H "Authorization: token $Git_Token" \
-            "https://api.github.com/repos/$Git_Repo/pulls/$Git_PR_Num/reviews"
-
 
 
