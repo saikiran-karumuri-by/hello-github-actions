@@ -25,4 +25,4 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: output
         run: |
-          echo ${{ toJson(steps.reviews.outputs.data) }}
+          echo ${{ steps.reviews.outputs.data }}
