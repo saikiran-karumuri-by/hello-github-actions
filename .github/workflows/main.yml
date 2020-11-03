@@ -10,4 +10,4 @@ jobs:
       - name: Update status on commit
         run: |
           chmod +x ./action-a/git-message.sh
-          ./action-a/git-message.sh $GITHUB_REPOSITORY ${{ env.GITHUB_TOKEN }}
+          ./action-a/git-message.sh $GITHUB_REPOSITORY ${{ secrets.GITHUB_TOKEN }}
