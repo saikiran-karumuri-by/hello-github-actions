@@ -28,7 +28,7 @@ jobs:
           echo ${{ toJson(steps.reviews.outputs.data) }}
       - uses: octokit/request-action@v2.x
         with:
-          route: POST /repos/:repository/pulls/:prnum/reviews/68131792/events
+          route: POST /repos/:repository/pulls/:prnum/reviews
           repository: ${{ github.repository }}
           prnum: ${{ github.event.pull_request.number }}
           mediaType: | # The | is significant!
