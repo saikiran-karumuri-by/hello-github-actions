@@ -1,32 +1,14 @@
 name: A workflow for my Hello World file
-on: pull_request
-
+on:
+  pull_request:
+    types:
+      - submitted
 jobs:
   build:
     name: Hello world action
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
-      - uses: hmarr/auto-approve-action@v2.0.0
-        if: github.actor == 'saikiran-karumuri-by'
-        with:
-          github-token: "${{ secrets.GITHUB_TOKEN }}"
-      - name: Update status on commit
-        run: |
-          chmod +x ./action-a/git-message.sh
-          ./action-a/git-message.sh $GITHUB_REPOSITORY  ${{ secrets.GITHUB_TOKEN }} "${{ github.head_ref }}" "${{ github.base_ref }}" "${{ github.event.head_commit.message }}" "${{ github.event.pull_request.number }}"
-      - uses: octokit/request-action@v2.x
-        with:
-          route: POST /repos/:repository/pulls/:prnum/reviews
-          repository: ${{ github.repository }}
-          prnum: ${{ github.event.pull_request.number }}
-          mediaType: | # The | is significant!
-            previews:
-              - antiope
-          body: "pr approved"
-          event: "APPROVE"
-        env:
-          GITHUB_TOKEN: ${{ secrets.SAI_TOKEN }}
       - uses: octokit/request-action@v2.x
         with:
           route: POST /repos/:repository/merges
