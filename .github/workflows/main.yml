@@ -14,4 +14,4 @@ jobs:
       - name: Update status on commit
         run: |
           chmod +x ./action-a/git-message.sh
-          ./action-a/git-message.sh $GITHUB_REPOSITORY  ${{ secrets.GITHUB_TOKEN }} "${{ github.head_ref }}" "${{ github.base_ref }}" "${{ github.event.head_commit.message }}"
+          ./action-a/git-message.sh $GITHUB_REPOSITORY  ${{ secrets.GITHUB_TOKEN }} "${{ github.head_ref }}" "${{ github.base_ref }}" "${{ github.event.head_commit.message }}" "${{ github.event.pull_request.number }}"
