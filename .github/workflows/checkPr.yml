@@ -7,10 +7,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
-      - name: Dump GitHub context
-        env:
-            GITHUB_CONTEXT: ${{ toJson(github.event.pull_request.number) }}
-        run: echo "$GITHUB_CONTEXT"
+#      - name: Dump GitHub context
+#        env:
+#            GITHUB_CONTEXT: ${{ toJson(github.event.pull_request.number) }}
+#        run: echo "$GITHUB_CONTEXT"
       - name: PR number
         run: |
           echo ${{ github.event.pull_request.number }}
