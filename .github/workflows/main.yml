@@ -14,4 +14,29 @@ jobs:
       - name: Update status on commit
         run: |
           chmod +x ./action-a/git-message.sh
-          ./action-a/git-message.sh $GITHUB_REPOSITORY  ${{ secrets.GITHUB_TOKEN }} "${{ github.head_ref }}" "${{ github.base_ref }}" "${{ github.event.head_commit.message }}"
+          ./action-a/git-message.sh $GITHUB_REPOSITORY  ${{ secrets.GITHUB_TOKEN }} "${{ github.head_ref }}" "${{ github.base_ref }}" "${{ github.event.head_commit.message }}" "${{ github.event.pull_request.number }}"
+      - uses: octokit/request-action@v2.x
+        with:
+          route: POST /repos/:repository/pulls/:prnum/reviews
+          repository: ${{ github.repository }}
+          prnum: ${{ github.event.pull_request.number }}
+          mediaType: | # The | is significant!
+            previews:
+              - antiope
+          body: "pr approved"
+          event: "APPROVE"
+        env:
+          GITHUB_TOKEN: ${{ secrets.SAI_TOKEN }}
+      - uses: octokit/request-action@v2.x
+        with:
+          route: POST /repos/:repository/merges
+          repository: ${{ github.repository }}
+          prnum: ${{ github.event.pull_request.number }}
+          mediaType: | # The | is significant!
+            previews:
+              - antiope
+          head: ${{ github.head_ref }}
+          base: ${{ github.base_ref }}
+          commit_message: ${{ github.event.head_commit.message }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
