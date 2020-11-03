@@ -18,7 +18,7 @@ jobs:
           body: "pr approved"
           event: "APPROVE"
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.SAI_TOKEN }}
 
 
 
