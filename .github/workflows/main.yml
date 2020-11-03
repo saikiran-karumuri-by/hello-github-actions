@@ -27,7 +27,6 @@ jobs:
         run: |
           echo ${{ toJson(steps.reviews.outputs.data) }}
       - uses: octokit/request-action@v2.x
-        id: reviews
         with:
           route: POST /repos/:repository/pulls/:prnum/reviews/68131792/events
           repository: ${{ github.repository }}
