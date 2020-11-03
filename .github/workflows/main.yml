@@ -26,4 +26,4 @@ jobs:
           base: ${{ github.event.pull_request.base.ref }}
           commit_message: ${{ github.event.pull_request.title }}
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.SAI_TOKEN }}
