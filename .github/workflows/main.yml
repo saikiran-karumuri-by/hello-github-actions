@@ -1,7 +1,6 @@
 name: Auto Merge
 
-on:
-  pull_request_review: submitted
+on: pull_request_review
 
 jobs:
   build:
