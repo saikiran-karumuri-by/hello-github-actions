@@ -23,8 +23,8 @@ jobs:
           mediaType: | # The | is significant!
             previews:
               - antiope
-          head: ${{ github.head_ref }}
-          base: ${{ github.base_ref }}
-          commit_message: ${{ github.event.head_commit.message }}
+          head: ${{ github.event.head.ref }}
+          base: ${{ github.event.base.ref }}
+          commit_message: ${{ github.event.title }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
