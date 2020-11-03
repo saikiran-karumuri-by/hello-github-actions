@@ -2,7 +2,7 @@ name: Auto Merge
 
 on:
   pull_request_review:
-    types: [edited, dismissed, submitted]
+    types: [submitted]
 
 jobs:
   build:
