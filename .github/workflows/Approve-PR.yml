@@ -7,10 +7,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
-      - uses: hmarr/auto-approve-action@v2.0.0
-        if: github.actor == 'saikiran-karumuri-by'
+      - uses: octokit/request-action@v2.x
         with:
-          github-token: "${{ secrets.GITHUB_TOKEN }}"
+          route: POST /repos/:repository/pulls/:prnum/reviews
+          repository: ${{ github.repository }}
+          prnum: ${{ github.event.pull_request.number }}
+          mediaType: | # The | is significant!
+            previews:
+              - antiope
+          body: "pr approved"
+          event: "APPROVE"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 
 
