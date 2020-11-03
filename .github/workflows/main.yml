@@ -25,4 +25,17 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: output
         run: |
-          echo ${{ fromJSON(steps.reviews.outputs.data) }}
+          echo ${{ toJson(steps.reviews.outputs.data) }}
+      - uses: octokit/request-action@v2.x
+        id: reviews
+        with:
+          route: POST /repos/:repository/pulls/:prnum/reviews/68131792/events
+          repository: ${{ github.repository }}
+          prnum: ${{ github.event.pull_request.number }}
+          mediaType: | # The | is significant!
+            previews:
+              - antiope
+          body: "pr approved"
+          event: "APPROVE"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
