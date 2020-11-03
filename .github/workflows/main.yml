@@ -2,7 +2,7 @@ name: Auto Merge
 
 on:
   pull_request_review_comment:
-    types: [submitted]
+              types: [created]
 
 jobs:
   build:
