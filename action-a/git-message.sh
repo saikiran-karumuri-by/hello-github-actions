@@ -12,7 +12,7 @@ echo $Git_Current_Branch
 echo $Git_PR_Num
 
 echo "https://api.github.com/repos/$Git_Repo/pulls/$Git_PR_Num/requested_reviewers"
-          jq -nc '{"reviewers": ["saikiran-karumuri-by"]}' | \
+          jq -nc '{"reviewers": ["saikarumuri"]}' | \
           curl -sL  -X POST -d @- \
             -H "Content-Type: application/json" \
             -H "Authorization: token $Git_Token" \
