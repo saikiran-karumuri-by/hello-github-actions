@@ -23,4 +23,6 @@ jobs:
           prnum: ${{ github.event.pull_request.number }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - run: "echo latest release: ${{ steps.reviews.outputs.data }}"
+      - name: output
+        run: |
+          echo ${{ toJson(steps.reviews.outputs.data) }}
