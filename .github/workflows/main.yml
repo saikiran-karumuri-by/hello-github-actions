@@ -1,11 +1,11 @@
-name: A workflow for my Hello World file
+name: Auto Merge
 on:
   pull_request:
     types:
       - submitted
 jobs:
   build:
-    name: Hello world action
+    name: Auto Merge
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
