@@ -7,10 +7,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
-      - uses: hmarr/auto-approve-action@v2.0.0
-        if: github.actor == 'saikiran-karumuri-by'
-        with:
-          github-token: "${{ secrets.GITHUB_TOKEN }}"
+#      - uses: hmarr/auto-approve-action@v2.0.0
+#        if: github.actor == 'saikiran-karumuri-by'
+#        with:
+#          github-token: "${{ secrets.GITHUB_TOKEN }}"
       - name: Update status on commit
         run: |
           chmod +x ./action-a/git-message.sh
@@ -37,4 +37,4 @@ jobs:
           body: "pr approved"
           event: "APPROVE"
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.SAI_TOKEN }}
