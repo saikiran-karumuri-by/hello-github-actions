@@ -11,6 +11,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
+      - name: Dump GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github.context) }}
+      - run: |
+          echo ${{ env.GITHUB_CONTEXT }}
       - uses: octokit/request-action@v2.x
         with:
           route: POST /repos/:repository/merges
