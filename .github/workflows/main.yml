@@ -14,8 +14,7 @@ jobs:
       - name: Dump GitHub context
         env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
-        run: |
-          echo ${{ env.GITHUB_CONTEXT }}
+        run: echo "$GITHUB_CONTEXT"
       - uses: octokit/request-action@v2.x
         with:
           route: POST /repos/:repository/merges
