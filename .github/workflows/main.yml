@@ -1,8 +1,8 @@
 name: Auto Merge
 on:
   pull_request_review:
-    types:
-      - submitted
+    types: [submitted]
+
 jobs:
   build:
     name: Auto Merge
