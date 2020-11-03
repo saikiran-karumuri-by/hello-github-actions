@@ -19,6 +19,9 @@ jobs:
           event: "APPROVE"
         env:
           GITHUB_TOKEN: ${{ secrets.SAI_TOKEN }}
+      - name: Dump GitHub context
+          env:
+            GITHUB_CONTEXT: ${{ toJson(github.event.pull_request) }}
 
 
 
